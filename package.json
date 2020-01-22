@@ -13,6 +13,10 @@
     "start": "webpack-dev-server --hot --mode development"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "mysql": "^2.18.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.19"
