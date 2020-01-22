@@ -15,7 +15,10 @@ class App extends React.Component {
     }
 }
 // this is a coment
+<<<<<<< HEAD
 // another comment
+=======
+>>>>>>> demoBranch
 
 
 ReactDOM.render(<App/>, document.getElementById('app'))
