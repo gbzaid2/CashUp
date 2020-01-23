@@ -42,6 +42,7 @@ class App extends React.Component {
     componentDidMount() {
       this.getAllTransactions();
       this.getAllCategories();
+    }
     changeTab(e) {
         // console.log('TESTING CHANGE TAB BUTT:', e.target.name)
         let button = e.target.name;
