@@ -19,5 +19,17 @@ module.exports = {
       .getAllCategories()
       .then(data => res.send(data))
       .catch(err => console.log(err));
+  },
+  submitTransaction: (req, res) => {
+    serverModel
+    .addTransaction(req.body)
+    .then(() => res.sendStatus(201))
+    .catch(err => res.sendStatus(500));
+  },
+  submitCategory: (req, res) => {
+    serverModel
+    .addCategory(req.body)
+    .then(() => res.sendStatus(201))
+    .catch(err => res.sendStatus(500));
   }
 };

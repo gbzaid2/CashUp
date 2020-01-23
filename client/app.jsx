@@ -37,13 +37,16 @@ class App extends React.Component {
     }
 
     submitTransaction(transaction) {
-        console.log('TESTING SUBMIT TRANS:', transaction);
-        // Make Axios post request here // ******
+        Axios.post('/server/transactions', transaction)
+        .then(() => console.log('submitted transaction to DB'))
+        .catch(err => console.log(err));
         
     }
 
     submitBudget(budget) {
-        console.log('TESTING SUBMIT BUDGET:', budget);
+      Axios.post('/server/categories', transaction)
+      .then(() => console.log('submitted budget to DB'))
+      .catch(err => console.log(err));
     }
 
     componentDidMount() {
