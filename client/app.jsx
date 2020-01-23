@@ -32,7 +32,7 @@ class App extends React.Component {
 
     getAllBudgets() {
       Axios.get('/server/budgets')
-      .then(data => this.setState({ categories: data.data}))
+      .then(data => this.setState({ budgets: data.data}))
       .catch(err => console.log(err));
     }
 
