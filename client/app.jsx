@@ -39,6 +39,7 @@ class App extends React.Component {
     submitTransaction(transaction) {
         Axios.post('/server/transactions', transaction)
         .then(() => console.log('submitted transaction to DB'))
+        .then(() => this.getAllTransactions())
         .catch(err => console.log(err));
         
     }
@@ -46,6 +47,7 @@ class App extends React.Component {
     submitBudget(budget) {
       Axios.post('/server/categories', transaction)
       .then(() => console.log('submitted budget to DB'))
+      .then(() => this.getAllCategories())
       .catch(err => console.log(err));
     }
 
