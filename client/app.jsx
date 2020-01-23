@@ -12,12 +12,12 @@ class App extends React.Component {
         this.state = {
             transactions: [],
             categories: [],
-            currentTab: "transations"
+            budgets: [],
+            currentTab: "transactions"
         }
       this.getAllTransactions = this.getAllTransactions.bind(this);
       this.getAllCategories = this.getAllCategories.bind(this);
-      this.submitTransaction = this.submitTransaction.bind(this);
-      this.changeTab = this.changeTab.bind(this);
+      this.getAllBudgets = this.getAllBudgets.bind(this);
     }
 
     getAllTransactions() {
@@ -69,7 +69,7 @@ class App extends React.Component {
                 }
                 
                 {this.state.currentTab === "budgets" ? 
-                <BudgetsTab categories={this.state.categories}/>: null
+                <BudgetsTab categories={this.state.categories}/> : null
                 }
                 
 
