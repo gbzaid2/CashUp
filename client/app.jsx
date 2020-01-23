@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom';
 import Axios from 'axios';
 
 import TransactionInput from './TransactionInput.jsx'
-import TransactionList from './TransactionList.jsx'
+import TransactionsTab from './TransactionsTab.jsx'
+import BudgetsTab from './BudgetsTab.jsx'
 
 class App extends React.Component {
     constructor() {
         super()
         this.state = {
             transactions: [],
-            categories: []
+            categories: [],
+            currentTab: "transations"
         }
       this.getAllTransactions = this.getAllTransactions.bind(this);
       this.getAllCategories = this.getAllCategories.bind(this);
+      this.submitTransaction = this.submitTransaction.bind(this);
+      this.changeTab = this.changeTab.bind(this);
     }
 
     getAllTransactions() {
@@ -28,14 +32,46 @@ class App extends React.Component {
       .catch(err => console.log(err));
     }
 
+    submitTransaction(transaction) {
+        console.log('TESTING SUBMIT TRANS:', transaction);
+        // Make Axios post request here // ******
+    }
+
+    changeTab(e) {
+        // console.log('TESTING CHANGE TAB BUTT:', e.target.name)
+        let button = e.target.name;
+        if (button === "transactions") {
+            this.setState({
+                currentTab: "transactions"
+            });
+        }
+        if (button === "budgets") {
+            this.setState({
+                currentTab: "budgets"
+            });
+        }
+
+    }
+
     render() {
         return (
             <div>
-                Hello World
-                <TransactionInput/>
+                <header><h1>CASHUP</h1></header>
+
+                <TransactionInput submitTransaction={this.submitTransaction}/>
                 <br/>
 
-                <TransactionList transactions={this.state.transactions}/>
+                <button name="transactions" onClick={this.changeTab}>Transactions</button>
+                <button name="budgets" onClick={this.changeTab}>Budgets</button>
+
+                {this.state.currentTab === "transactions" ? 
+                <TransactionsTab transactions={this.state.transactions} categories={this.state.categories}/> : null
+                }
+                
+                {this.state.currentTab === "budgets" ? 
+                <BudgetsTab categories={this.state.categories}/>: null
+                }
+                
 
             </div>
         )
