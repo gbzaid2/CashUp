@@ -8,15 +8,15 @@ class TransactionsTab extends React.Component {
     render() {
         return (
             <div className="txn">
-                <h3>Your Transactions</h3>     
+                <h2>Your Transactions</h2>     
 
                 <div className="txn-table">
 
                     <div className="txn-header txn-row">
-                        <div className="txn-data">Date</div>
-                        <div className="txn-data">Description</div>
-                        <div className="txn-data">Amount</div>
-                        <div className="txn-data">Category</div>
+                        <div className="txn-data"><h4>Date</h4></div>
+                        <div className="txn-data"><h4>Description</h4></div>
+                        <div className="txn-data"><h4>Amount</h4></div>
+                        <div className="txn-data"><h4>Category</h4></div>
                     </div>
 
                     {this.props.transactions.map((transaction) => {
