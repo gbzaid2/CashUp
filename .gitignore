@@ -4,6 +4,7 @@ coverage/
 dist/*
 !dist/index.html
 node_modules/
+db/config.js
 *.log
 
 # OS generated files
