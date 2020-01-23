@@ -1,0 +1,12 @@
+DROP DATABASE cashup;
+CREATE DATABASE IF NOT EXISTS cashup;
+
+
+
+CREATE TABLE transactions (
+    id INT NOT NULL AUTO_INCREMENT,
+    date VARCHAR(20) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    amount DECIMAL(10,2)
+
+)
