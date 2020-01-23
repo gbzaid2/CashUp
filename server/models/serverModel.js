@@ -13,7 +13,7 @@ const getAllCategories = () => {
 }
 
 const addCategory = (category) => {
-    let values = [category.name, category.target];
+    let values = [category.title, category.limit];
     return connection.query(`INSERT INTO categories (name, target) VALUES (?, ?)`, values)
     
 }
