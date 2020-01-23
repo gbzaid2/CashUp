@@ -17,7 +17,8 @@ class App extends React.Component {
         }
       this.getAllTransactions = this.getAllTransactions.bind(this);
       this.getAllCategories = this.getAllCategories.bind(this);
-      this.getAllBudgets = this.getAllBudgets.bind(this);
+      this.changeTab = this.changeTab.bind(this);
+      this.submitTransaction = this.submitTransaction.bind(this);
     }
 
     getAllTransactions() {
@@ -37,6 +38,7 @@ class App extends React.Component {
     submitTransaction(transaction) {
         console.log('TESTING SUBMIT TRANS:', transaction);
         // Make Axios post request here // ******
+        
     }
 
     componentDidMount() {
