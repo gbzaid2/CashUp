@@ -10,10 +10,12 @@ class App extends React.Component {
         super()
         this.state = {
             transactions: [],
-            categories: []
+            categories: [],
+            budgets: []
         }
       this.getAllTransactions = this.getAllTransactions.bind(this);
       this.getAllCategories = this.getAllCategories.bind(this);
+      this.getAllBudgets = this.getAllBudgets.bind(this);
     }
 
     getAllTransactions() {
@@ -26,6 +28,18 @@ class App extends React.Component {
       Axios.get('/server/categories')
       .then(data => this.setState({ categories: data.data}))
       .catch(err => console.log(err));
+    }
+
+    getAllBudgets() {
+      Axios.get('/server/budgets')
+      .then(data => this.setState({ categories: data.data}))
+      .catch(err => console.log(err));
+    }
+
+    componentDidMount() {
+      this.getAllTransactions();
+      this.getAllCategories();
+      this.getAllBudgets();
     }
 
     render() {

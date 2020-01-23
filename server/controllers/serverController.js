@@ -7,5 +7,8 @@ module.exports = {
   },
   getCategories: (req, res) => {
 
+  },
+  getBudgets: (req, res) => {
+    
   }
 };
