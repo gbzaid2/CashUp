@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Axios from 'axios';
 
 import TransactionInput from './TransactionInput.jsx'
 import TransactionList from './TransactionList.jsx'
@@ -8,8 +9,23 @@ class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            transactions: []
+            transactions: [],
+            categories: []
         }
+      this.getAllTransactions = this.getAllTransactions.bind(this);
+      this.getAllCategories = this.getAllCategories.bind(this);
+    }
+
+    getAllTransactions() {
+      Axios.get('/server/transactions')
+      .then(data => this.setState({ transactions: data.data}))
+      .catch(err => console.log(err));
+    }
+
+    getAllCategories() {
+      Axios.get('/server/categories')
+      .then(data => this.setState({ categories: data.data}))
+      .catch(err => console.log(err));
     }
 
     render() {
