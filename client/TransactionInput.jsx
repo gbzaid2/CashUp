@@ -5,10 +5,20 @@ class TransactionInput extends React.Component {
         super(props)
         this.state = {
             description: '',
-            cost: 0
+            cost: 0,
+            selectedCategory: 'None'
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
+    }
+
+    handleSelect(e) {
+        let selected = e.target.value;
+        // console.log('TESTING SELECT:', selected);
+        this.setState({
+            selectedCategory: selected
+        })
     }
 
     handleInput(e) {
@@ -39,9 +49,20 @@ class TransactionInput extends React.Component {
                         name="cost" 
                         onChange={this.handleInput}
                         value={this.state.cost}></input>
+                    
+
                 </form>
 
-                <button onClick={this.handleClick}>Submit</button>
+                <select onChange={this.handleSelect}>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    {this.props.categories.map(category => {
+                        return (
+                            <option key={category.id} value={category.name}>{category.name}</option>
+                        )
+                    })}
+                </select>
+
+                <button onClick={this.handleClick}>Enter Transaction</button>
             </div>
         )
     }
