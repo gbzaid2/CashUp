@@ -10,13 +10,13 @@ module.exports = {
   },
   getCategories: (req, res) => {
     serverModel
-      .getAllCategories
+      .getAllCategories()
       .then(data => res.send(data))
       .catch(err => console.log(err));
   },
   getBudgets: (req, res) => {
     serverModel
-      .getBudgets
+      .getAllCategories()
       .then(data => res.send(data))
       .catch(err => console.log(err));
   }
