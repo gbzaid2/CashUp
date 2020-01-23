@@ -23,12 +23,14 @@ class App extends React.Component {
     getAllTransactions() {
       Axios.get('/server/transactions')
       .then(data => this.setState({ transactions: data.data}))
+      .then(() => console.log(this.state.transactions))
       .catch(err => console.log(err));
     }
 
     getAllCategories() {
       Axios.get('/server/categories')
       .then(data => this.setState({ categories: data.data}))
+      .then(() => console.log(this.state.categories))
       .catch(err => console.log(err));
     }
 
@@ -37,6 +39,10 @@ class App extends React.Component {
         // Make Axios post request here // ******
     }
 
+    componentDidMount() {
+      this.getAllTransactions();
+      this.getAllCategories();
+    }
     changeTab(e) {
         // console.log('TESTING CHANGE TAB BUTT:', e.target.name)
         let button = e.target.name;
