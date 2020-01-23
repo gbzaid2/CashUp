@@ -5,6 +5,7 @@ import Axios from 'axios';
 import TransactionInput from './TransactionInput.jsx'
 import TransactionsTab from './TransactionsTab.jsx'
 import BudgetsTab from './BudgetsTab.jsx'
+import BudgetInput from './BudgetInput.jsx';
 
 class App extends React.Component {
     constructor() {
@@ -12,13 +13,13 @@ class App extends React.Component {
         this.state = {
             transactions: [],
             categories: [],
-            budgets: [],
             currentTab: "transactions"
         }
       this.getAllTransactions = this.getAllTransactions.bind(this);
       this.getAllCategories = this.getAllCategories.bind(this);
       this.changeTab = this.changeTab.bind(this);
       this.submitTransaction = this.submitTransaction.bind(this);
+      this.submitBudget = this.submitTransaction.bind(this);
     }
 
     getAllTransactions() {
@@ -36,9 +37,18 @@ class App extends React.Component {
     }
 
     submitTransaction(transaction) {
-        console.log('TESTING SUBMIT TRANS:', transaction);
-        // Make Axios post request here // ******
+        Axios.post('/server/transactions', transaction)
+        .then(() => console.log('submitted transaction to DB'))
+        .then(() => this.getAllTransactions())
+        .catch(err => console.log(err));
         
+    }
+
+    submitBudget(budget) {
+      Axios.post('/server/categories', transaction)
+      .then(() => console.log('submitted budget to DB'))
+      .then(() => this.getAllCategories())
+      .catch(err => console.log(err));
     }
 
     componentDidMount() {
@@ -66,7 +76,14 @@ class App extends React.Component {
             <div>
                 <header><h1>CASHUP</h1></header>
 
-                <TransactionInput submitTransaction={this.submitTransaction}/>
+                {this.state.currentTab === "transactions" ? 
+                <TransactionInput submitTransaction={this.submitTransaction} categories={this.state.categories}/> : null
+                }
+
+                {this.state.currentTab === "budgets" ? 
+                <BudgetInput submitBudget={this.submitBudget}/> : null
+                }
+
                 <br/>
 
                 <button name="transactions" onClick={this.changeTab}>Transactions</button>
