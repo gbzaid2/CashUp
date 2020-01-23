@@ -39,11 +39,9 @@ class App extends React.Component {
         // Make Axios post request here // ******
     }
 
-<<<<<<< HEAD
     componentDidMount() {
       this.getAllTransactions();
       this.getAllCategories();
-=======
     changeTab(e) {
         // console.log('TESTING CHANGE TAB BUTT:', e.target.name)
         let button = e.target.name;
@@ -58,7 +56,6 @@ class App extends React.Component {
             });
         }
 
->>>>>>> ec6ef12ee63512a4d83f35afb86df9fa1981106f
     }
 
     render() {
