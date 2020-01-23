@@ -39,7 +39,6 @@ class App extends React.Component {
     componentDidMount() {
       this.getAllTransactions();
       this.getAllCategories();
-      this.getAllBudgets();
     }
 
     render() {
