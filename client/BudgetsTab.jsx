@@ -9,15 +9,15 @@ class BudgetsTab extends React.Component {
         return (
             <div className="budget">
 
-                <h3>Your Budgets</h3>     
+                <h2>Your Budgets</h2>     
 
                 <div className="budget-table">
 
                     <div className="budget-header budget-row">
-                        <div className="budget-data">Date</div>
-                        <div className="budget-data">Category</div>
-                        <div className="budget-data">Limit</div>
-                        <div className="budget-data">Spent</div>
+                        
+                        <div className="budget-data"><h4>Category</h4></div>
+                        <div className="budget-data"><h4>Limit</h4></div>
+                        <div className="budget-data"><h4>Spent</h4></div>
                     </div>
 
                     {/* {this.props.transactions.map((transaction) => {
