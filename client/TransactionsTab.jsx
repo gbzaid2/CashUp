@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TransactionList extends React.Component {
+class TransactionsTab extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -37,4 +37,4 @@ class TransactionList extends React.Component {
     }
 }
 
-export default TransactionList;
+export default TransactionsTab;
