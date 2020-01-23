@@ -17,7 +17,6 @@ class App extends React.Component {
         }
       this.getAllTransactions = this.getAllTransactions.bind(this);
       this.getAllCategories = this.getAllCategories.bind(this);
-      this.getAllBudgets = this.getAllBudgets.bind(this);
     }
 
     getAllTransactions() {
