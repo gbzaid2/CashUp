@@ -1,4 +1,5 @@
 import React from 'react';
+import Transaction from './Transaction.jsx'
 
 class TransactionsTab extends React.Component {
     constructor(props) {
@@ -21,12 +22,9 @@ class TransactionsTab extends React.Component {
 
                     {this.props.transactions.map((transaction) => {
                         return (
-                            <div className="txn-row" key={transaction.id}>
-                                <div className="txn-data">{transaction.date}</div>
-                                <div className="txn-data">{transaction.description}</div>
-                                <div className="txn-data">{transaction.amount}</div>
-                            </div>
-
+                            <Transaction 
+                                transaction={transaction} 
+                                categories={this.props.categories}/>
                         )
                     })}
 
@@ -36,5 +34,13 @@ class TransactionsTab extends React.Component {
         )
     }
 }
+
+
+
+
+
+
+
+
 
 export default TransactionsTab;
