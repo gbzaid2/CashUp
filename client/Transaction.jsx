@@ -5,49 +5,66 @@ class Transaction extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+            category: ''
         }
         this.handleSelect = this.handleSelect.bind(this);
         this.getCategoryName = this.getCategoryName.bind(this);
     }
 
     handleSelect(e) {
-        // console.log('TESTING TRANS CATEGORY SELECT:', e.target.value);
-        let category = e.target.value;
-        // this.setState({
-        //     selectedCategory: category
-        // })
+        console.log('TESTING TRANS CATEGORY SELECT:', e.target.value);
+        let categoryId = e.target.value;
+        this.getCategoryName(categoryId);
+
+        let update = {
+            categoryId: categoryId,
+            transactionId: this.props.transaction.id
+        }
+
+        this.props.updateCategory(update)
 
     }
 
+    componentDidMount() {
+        if (this.props.transaction.category_id === null) {
+            this.setState({
+                category: "None"
+            })
+        } else {
+            this.getCategoryName(this.props.transaction.category_id)
+        }
+    }
+
     getCategoryName(id) {
-      Axios.get("/server/categoryId", {
+    
+        Axios.get("/server/categoryId", {
         params: {
           ID: id
         }
       })
-        .then(data =>
+        .then(data => {
           this.setState({
-            value: data.data[0].id,
-            name: data.data[0].name
+            category: data.data[0].name
           })
-        )
+ 
+        })
         .catch(() => {
           return;
         });
     }
 
     render() {
+        console.log('WHAT IS THE CATEGORY STATE OF EACH TRANS:', this.state);
         return (
-        <div className="txn-row">
+       
 
-            <div className="txn-row" key={this.props.transaction.id}>
+            <div className="txn-row">
 
                 <div className="txn-data">{this.props.transaction.date}</div>
                 <div className="txn-data">{this.props.transaction.description}</div>
                 <div className="txn-data">{this.props.transaction.amount}</div>
                 
-                <select onChange={this.handleSelect} value={this.state.selectedCategory}>
+                <select onChange={this.handleSelect} value={this.state.category}>
                     
                     {this.props.categories.map((category, index) => {
                         return (
@@ -58,7 +75,6 @@ class Transaction extends React.Component {
 
             </div>
 
-        </div>
         )
     }
 }

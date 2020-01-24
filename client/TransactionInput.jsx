@@ -35,7 +35,7 @@ class TransactionInput extends React.Component {
     }
 
     render() {
-        console.log('TESTING STATE CHANGE:', this.state)
+        // console.log('TESTING STATE CHANGE:', this.state)
         return (
             <div className="txn-entry">
                 <form>
