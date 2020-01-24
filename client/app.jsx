@@ -19,7 +19,7 @@ class App extends React.Component {
       this.getAllCategories = this.getAllCategories.bind(this);
       this.changeTab = this.changeTab.bind(this);
       this.submitTransaction = this.submitTransaction.bind(this);
-      this.submitBudget = this.submitTransaction.bind(this);
+      this.submitBudget = this.submitBudget.bind(this);
       this.updateCategory = this.updateCategory.bind(this);
     }
 
@@ -46,7 +46,8 @@ class App extends React.Component {
     }
 
     submitBudget(budget) {
-      Axios.post('/server/categories', transaction)
+        // console.log('TESTING CLIENT BUDGET:', budget);
+      Axios.post('/server/categories', budget)
       .then(() => console.log('submitted budget to DB'))
       .then(() => this.getAllCategories())
       .catch(err => console.log(err));
@@ -72,7 +73,8 @@ class App extends React.Component {
     }
 
     updateCategory(update) {
-        console.log('TESTING UPDATE CAT:', update);
+        // console.log('TESTING UPDATE CAT:', update);
+        Axios.put("/server/transactions", update)
     }
 
     

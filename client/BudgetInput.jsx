@@ -25,6 +25,7 @@ class BudgetInput extends React.Component {
     }
 
     render() {
+        console.log('IS STATE CHANGING BUDGET:', this.state);
         return (
             <div className="budget-entry">
                 <form>
