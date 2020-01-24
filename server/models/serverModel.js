@@ -20,26 +20,23 @@ const addCategory = (category) => {
     
 }
 
-const addTransaction = (transaction) => {
-    let values = [transaction.date, transaction.cost, transaction.description, transaction.selectedCategory]
-    connection.query("SELECT id FROM categories WHERE name = ?", [values[3]])
-    // .then(data => console.log(data))
-    // .catch(err => console.log(err));
-    // console.log(values);
-    // return connection.query(`INSERT INTO transactions (date, amount, description, category_id) VALUES (${values[0]}, ${values[1]}, ${values[2]}, ${values[3]}, (SELECT id FROM categories WHERE name = ?))`);
-}
 const updateTransaction = (transaction) => {
     let values = [transaction.category_name, transaction.id];
     connection.query("Select id FROM categories WHERE name = ")
     return connection.query('UPDATE transactions SET category_id = ? WHERE id = ?', values)
 }
 
-const getCategoryById = (id) => {
-    return connection.query("SELECT name FROM categories WHERE id = ?", [id]);
+const addTransaction = (req, res) => {
+    console.log('TESTING MODEL REQ:', req);
+    let values = [req.date, Number(req.cost), req.description, req.selectedCategory]
+    // return connection.query(`INSERT INTO transactions (date, amount, description, category_id) VALUES (?, ?, ?)`)
 }
 
-
-// getAllTransactions().then(data =>console.log(data)).catch(err => consolelo)
+const getCategoryById = (id) => {
+    console.log('TESTING MODEL GET CAT BY ID:', id); // id is a NUMBER
+    let values = [id];
+    return connection.query('SELECT * from categories WHERE id = ?', values)
+}
 
 module.exports = {
     getAllTransactions,

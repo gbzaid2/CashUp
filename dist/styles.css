@@ -5,7 +5,22 @@ h1 {
   justify-content: center;
 }
 
-.txn-header {
+.txn-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.txn-entry {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.budget-entry {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.budget-row {
   display: flex;
   justify-content: space-around;
 }

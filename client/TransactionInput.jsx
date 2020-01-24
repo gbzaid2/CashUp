@@ -35,9 +35,16 @@ class TransactionInput extends React.Component {
     }
 
     render() {
+        // console.log('TESTING STATE CHANGE:', this.state)
         return (
             <div className="txn-entry">
                 <form>
+                    <input type="date"
+                            name="date"
+                            min="2019-01-01"
+                            max="2020-12-31"
+                            onChange={this.handleInput}></input>
+
                     <input type="text" 
                         placeholder="Description" 
                         name="description" 
@@ -54,7 +61,7 @@ class TransactionInput extends React.Component {
                 </form>
 
                 <select onChange={this.handleSelect}>
-                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="" selected disabled hidden>Choose Category</option>
                     {this.props.categories.map(category => {
                         return (
                             <option key={category.id} value={category.name}>{category.name}</option>
