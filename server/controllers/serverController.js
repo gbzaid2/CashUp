@@ -34,10 +34,12 @@ module.exports = {
     .catch(err => res.sendStatus(500));
   },
   updateTransaction: (req, res) => {
-      let transactionId = req.params.id;
-      let category = req.body.category;
+      let update = req.body;
+      let transactionId = update.transactionId;
+      let category_id = update.categoryId;
+      // console.log('TESTING CONTROLLER REQ:', req.body);
       serverModel
-      .updateTransaction(transactionId, category)
+      .updateTransaction(transactionId, category_id)
       .then(() => res.sendStatus(200))
       .catch(err => res.sendStatus(500));
   },

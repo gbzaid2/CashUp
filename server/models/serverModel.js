@@ -15,14 +15,15 @@ const getAllCategories = () => {
 }
 
 const addCategory = (category) => {
+    // console.log('TESTING MODEL ADD CAT:', category);
     let values = [category.title, category.limit];
     return connection.query(`INSERT INTO categories (name, target) VALUES (?, ?)`, values)
     
 }
 
-const updateTransaction = (transaction) => {
-    let values = [transaction.category_name, transaction.id];
-    connection.query("Select id FROM categories WHERE name = ")
+
+const updateTransaction = (transactionId, category_id) => {
+    let values = [category_id, transactionId];
     return connection.query('UPDATE transactions SET category_id = ? WHERE id = ?', values)
 }
 

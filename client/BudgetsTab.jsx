@@ -1,8 +1,8 @@
 import React from 'react';
 
 class BudgetsTab extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     }
 
     render() {
@@ -20,16 +20,16 @@ class BudgetsTab extends React.Component {
                         <div className="budget-data"><h4>Spent</h4></div>
                     </div>
 
-                    {/* {this.props.transactions.map((transaction) => {
+                    {this.props.categories.map((category) => {
                         return (
-                            <div className="budget-row" key={transaction.id}>
-                                <div className="budget-data">{transaction.date}</div>
-                                <div className="budget-data">{transaction.description}</div>
-                                <div className="budget-data">{transaction.amount}</div>
+                            <div className="budget-row" key={category.id}>
+                                <div className="budget-data">{category.name}</div>
+                                <div className="budget-data">{category.target}</div>
+                                <div className="budget-data">{category.total}</div>
                             </div>
 
                         )
-                    })} */}
+                    })}
 
                 </div>
 

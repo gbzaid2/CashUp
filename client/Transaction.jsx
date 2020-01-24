@@ -5,56 +5,41 @@ class Transaction extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            category: ''
         }
         this.handleSelect = this.handleSelect.bind(this);
-        this.getCategoryName = this.getCategoryName.bind(this);
     }
 
     handleSelect(e) {
-        console.log('TESTING TRANS CATEGORY SELECT:', e.target.value);
+        // console.log('TESTING TRANS CATEGORY SELECT:', e.target.value);
+     
         let categoryId = e.target.value;
-        this.getCategoryName(categoryId);
+
+        this.setState({
+            category: categoryId
+        })
 
         let update = {
-            categoryId: categoryId,
+            categoryId: Number(categoryId),
             transactionId: this.props.transaction.id
         }
-
         this.props.updateCategory(update)
-
     }
 
     componentDidMount() {
         if (this.props.transaction.category_id === null) {
             this.setState({
-                category: "None"
+                category: 0
             })
         } else {
-            this.getCategoryName(this.props.transaction.category_id)
+            this.setState({
+                category: this.props.transaction.category_id
+            })
         }
     }
 
-    getCategoryName(id) {
-    
-        Axios.get("/server/categoryId", {
-        params: {
-          ID: id
-        }
-      })
-        .then(data => {
-          this.setState({
-            category: data.data[0].name
-          })
- 
-        })
-        .catch(() => {
-          return;
-        });
-    }
 
     render() {
-        console.log('WHAT IS THE CATEGORY STATE OF EACH TRANS:', this.state);
+        //console.log('TRANS ID:', this.props.transaction.id, 'CATEGORY:', this.state);
         return (
        
 
@@ -65,6 +50,8 @@ class Transaction extends React.Component {
                 <div className="txn-data">{this.props.transaction.amount}</div>
                 
                 <select onChange={this.handleSelect} value={this.state.category}>
+
+                    <option value="0">None</option>
                     
                     {this.props.categories.map((category, index) => {
                         return (
