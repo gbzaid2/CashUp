@@ -39,5 +39,12 @@ module.exports = {
       .updateTransaction(transactionId, category)
       .then(() => res.sendStatus(200))
       .catch(err => res.sendStatus(500));
+  },
+  getCategoryById: (req, res) => {
+    let id = req.query.ID;
+    serverModel
+    .getCategoryById(id)
+    .then(data => res.send(data))
+    .catch(err => res.sendStatus(500));
   }
 };
