@@ -26,9 +26,16 @@ const updateTransaction = (transaction) => {
     return connection.query('UPDATE transactions SET category_id = ? WHERE id = ?', values)
 }
 
-const addTransaction = (req, res) => {
-    console.log('TESTING MODEL REQ:', req);
-    let values = [req.date, Number(req.cost), req.description, req.selectedCategory]
+const addTransaction = (transaction) => {
+    //console.log('TESTING MODEL REQ:', req);
+    //let values = [req.date, Number(req.cost), req.description, req.selectedCategory]
+    return connection.query(`Select id from categories where name = "${transaction.selectedCategory}"`)
+    .then(data => {
+        let id = data[0].id;
+        let values = [transaction.date, transaction.cost, transaction.description, id]
+        return connection.query(`INSERT INTO transactions (date, amount, description, category_id) VALUES (?, ?, ?, ?)`, values);
+
+    })
     // return connection.query(`INSERT INTO transactions (date, amount, description, category_id) VALUES (?, ?, ?)`)
 }
 
@@ -37,6 +44,7 @@ const getCategoryById = (id) => {
     let values = [id];
     return connection.query('SELECT * from categories WHERE id = ?', values)
 }
+
 
 module.exports = {
     getAllTransactions,
