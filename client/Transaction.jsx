@@ -21,7 +21,20 @@ class Transaction extends React.Component {
     }
 
     getCategoryName(id) {
-        // Axios.get('/')
+      Axios.get("/server/categoryId", {
+        params: {
+          ID: id
+        }
+      })
+        .then(data =>
+          this.setState({
+            value: data.data[0].id,
+            name: data.data[0].name
+          })
+        )
+        .catch(() => {
+          return;
+        });
     }
 
     render() {
