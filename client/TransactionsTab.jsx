@@ -22,9 +22,11 @@ class TransactionsTab extends React.Component {
 
                     {this.props.transactions.map((transaction) => {
                         return (
-                            <Transaction 
+                            <Transaction key={transaction.id}
                                 transaction={transaction} 
-                                categories={this.props.categories}/>
+                                categories={this.props.categories}
+                                updateCategory={this.props.updateCategory}
+                                />
                         )
                     })}
 

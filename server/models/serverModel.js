@@ -23,9 +23,23 @@ const updateTransaction = (transaction, callback) => {
     return connection.query('UPDATE transactions SET category_id = ? WHERE id = ?', values)
 }
 
+const addTransaction = (req, res) => {
+    console.log('TESTING MODEL REQ:', req);
+    let values = [req.date, Number(req.cost), req.description, req.selectedCategory]
+    // return connection.query(`INSERT INTO transactions (date, amount, description, category_id) VALUES (?, ?, ?)`)
+}
+
+const getCategoryById = (id) => {
+    console.log('TESTING MODEL GET CAT BY ID:', id); // id is a NUMBER
+    let values = [id];
+    return connection.query('SELECT * from categories WHERE id = ?', values)
+}
+
 module.exports = {
     getAllTransactions,
     getAllCategories,
     addCategory,
-    updateTransaction
+    updateTransaction,
+    addTransaction,
+    getCategoryById
 };

@@ -20,19 +20,20 @@ class App extends React.Component {
       this.changeTab = this.changeTab.bind(this);
       this.submitTransaction = this.submitTransaction.bind(this);
       this.submitBudget = this.submitTransaction.bind(this);
+      this.updateCategory = this.updateCategory.bind(this);
     }
 
     getAllTransactions() {
       Axios.get('/server/transactions')
       .then(data => this.setState({ transactions: data.data}))
-      .then(() => console.log(this.state.transactions))
+      .then(() => console.log('TESTING ALL TRANSACTIONS:', this.state.transactions))
       .catch(err => console.log(err));
     }
 
     getAllCategories() {
       Axios.get('/server/categories')
       .then(data => this.setState({ categories: data.data}))
-      .then(() => console.log(this.state.categories))
+      .then(() => console.log('TESTING ALL CATEGORIES:', this.state.categories))
       .catch(err => console.log(err));
     }
 
@@ -68,8 +69,13 @@ class App extends React.Component {
                 currentTab: "budgets"
             });
         }
-
     }
+
+    updateCategory(update) {
+        console.log('TESTING UPDATE CAT:', update);
+    }
+
+    
 
     render() {
         return (
@@ -90,7 +96,7 @@ class App extends React.Component {
                 <button name="budgets" onClick={this.changeTab}>Budgets</button>
 
                 {this.state.currentTab === "transactions" ? 
-                <TransactionsTab transactions={this.state.transactions} categories={this.state.categories}/> : null
+                <TransactionsTab transactions={this.state.transactions} categories={this.state.categories} updateCategory={this.updateCategory}/> : null
                 }
                 
                 {this.state.currentTab === "budgets" ? 

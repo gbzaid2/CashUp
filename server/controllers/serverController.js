@@ -3,6 +3,7 @@ const serverModel = require("../models/serverModel.js")
 
 module.exports = {
   getTransactions: (req, res) => {
+    console.log('TESTING THIS METHOD');
     serverModel
       .getAllTransactions()
       .then(data => res.send(data))
@@ -41,7 +42,9 @@ module.exports = {
       .catch(err => res.sendStatus(500));
   },
   getCategoryById: (req, res) => {
+    
     let id = req.query.ID;
+    // console.log('IS THIS WORKING:', req.query);
     serverModel
     .getCategoryById(id)
     .then(data => res.send(data))
